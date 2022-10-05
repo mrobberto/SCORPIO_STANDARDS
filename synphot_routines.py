@@ -188,23 +188,7 @@ def get_synphot_spectra_with_diff_flux_units(inspec):
 	return spec_fnu, spec_flam, spec_Jy
 
 
-def create_new_fits_bintab_from_cols(lambda_col,flux_col,primary_hdu,err_col=None,new_fname=None):
-	
-	if err_col is not None:
-		
-		new_dhdu = fits.BinTableHDU.from_columns([lambda_col,flux_col,err_col])
-		
-	else:
-		new_dhdu = fits.BinTableHDU.from_columns([lambda_col,flux_col])
-	
-	new_hdus = fits.HDUList([primary_hdu,new_dhdu])
-	
-	if new_fname is not None:
-		
-		new_hdus.writeto(new_fname,overwrite=True)
-		
-		
-	return new_hdus
+
 
 def create_new_fits_bintab(lambda_angstrom,flx_data,primary_hdu,err_data=None,new_fname=None):
 
